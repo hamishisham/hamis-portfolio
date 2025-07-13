@@ -12,8 +12,13 @@ function App() {
     <div className="bg-black text-white scroll-smooth">
       <Navbar />
       <main>
-        <Suspense fallback={<div className="text-center mt-20">Loading...</div>}>
-          <Hero />
+      <Suspense
+        fallback={
+          <div className="flex justify-center items-center min-h-screen bg-[#0d1117]">
+            <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        }
+      >   <Hero />
           <Skills />
           <Projects />
           <Experience />
