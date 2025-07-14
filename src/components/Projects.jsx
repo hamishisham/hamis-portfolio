@@ -11,7 +11,7 @@ const fullstackProjects = [
     repo: "https://github.com/Mohamed-Fouad-Nassar/web-master-intern-workshop-2-e-learning-platform",
     role: "Built the admin dashboard to manage lessons, students, and exams.",
     tag: "Full-Stack",
-    image: "/src/assets/edupress.PNG",
+    image: "/assets/edupress.PNG",
   },
   {
     title: "Amazon Clone - Client",
@@ -19,7 +19,7 @@ const fullstackProjects = [
     liveDemo: "https://react-e-commerce-clone.vercel.app/",
     repo: "https://github.com/hamishisham/react-e-commerce-clone",
     role: "Team Lead: Header & Footer Layout, Product Page, Cart, Wishlist, Redux slices.",
-    image: "/src/assets/amazon.PNG",
+    image: "/assets/amazon.PNG",
   },
 ];
 
@@ -31,7 +31,7 @@ const uiProjects = [
     liveDemo: "https://pizza-hut-website-theta.vercel.app/index.html",
     repo: "https://github.com/hamishisham/pizza-site",
     role: "Designed and implemented layout, cart logic, and categories using HTML, CSS, JS.",
-    image: "/src/assets/pizza.PNG",
+    image: "/assets/pizza.PNG",
   },
   {
     title: "Interior Design Landing Page",
@@ -39,7 +39,7 @@ const uiProjects = [
     liveDemo: "https://interior-design-landing-page-mauve.vercel.app/",
     repo: "https://github.com/hamishisham/Interior-Design-Landing-Page",
     role: "Designed full layout using HTML & CSS with responsive styling.",
-    image: "/src/assets/viva.PNG",
+    image: "/assets/viva.PNG",
   },
   {
     title: "Movies App",
@@ -47,7 +47,7 @@ const uiProjects = [
     liveDemo: "https://hamishisham.github.io/Movies-App-master/",
     repo: "https://github.com/hamishisham/Movies-App-master",
     role: "Developed full UI using vanilla JS and CSS.",
-    image: "/src/assets/movies.PNG",
+    image: "/assets/movies.PNG",
   }
 ];
 
