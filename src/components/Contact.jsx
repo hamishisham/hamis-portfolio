@@ -4,11 +4,20 @@ import {
   FaEnvelope,
   FaPhone,
 } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
     <footer id="contact" className="w-full py-20 bg-[#0d1117] text-white text-center px-4">
-      <h2 className="text-3xl font-bold mb-6">Let's Connect</h2>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-3xl md:text-4xl font-bold text-center text-white border-b border-gray-700 pb-4 mb-10 w-fit mx-auto"
+      >
+        Let's Connect
+      </motion.h2>
 
       {/* Social Links */}
       <div className="flex justify-center gap-6 text-xl mb-8 flex-wrap">

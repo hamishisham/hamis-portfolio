@@ -31,7 +31,15 @@ export default function Experience() {
       id="experience"
       className="w-full py-20 bg-[#0d1117] text-white px-4 lg:px-32"
     >
-      <h2 className="text-3xl font-bold text-center mb-12">Experience</h2>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-3xl md:text-4xl font-bold text-center text-white border-b border-gray-700 pb-4 mb-10 w-fit mx-auto"
+      >
+        Experience
+      </motion.h2>
       <div className="space-y-8">
         {experiences.map((exp, index) => (
           <motion.div

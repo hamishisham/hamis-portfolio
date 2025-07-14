@@ -152,7 +152,15 @@ export default function Projects() {
       id="projects"
       className="w-full py-20 bg-[#0d1117] text-white px-4 lg:px-32"
     >
-      <h2 className="text-3xl font-bold text-center mb-10">Projects</h2>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-3xl md:text-4xl font-bold text-center text-white border-b border-gray-700 pb-4 mb-10 w-fit mx-auto"
+      >
+        Projects
+      </motion.h2>
 
       {/* Full-Stack Projects */}
       <h3 className="text-2xl font-semibold mb-6 text-green-400">Full-Stack & Team Projects</h3>

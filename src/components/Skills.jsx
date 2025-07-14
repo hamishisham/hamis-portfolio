@@ -55,8 +55,15 @@ export default function Skills() {
       ref={skillsRef}
       className="w-full py-20 bg-[#0d1117] text-white px-4 lg:px-32"
     >
-      <h2 className="text-3xl font-bold text-center mb-10">Skills</h2>
-
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-3xl md:text-4xl font-bold text-center text-white border-b border-gray-700 pb-4 mb-10 w-fit mx-auto"
+      >
+        Skills
+      </motion.h2>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
         {visibleSkills.map((skill, index) => (
           <motion.div

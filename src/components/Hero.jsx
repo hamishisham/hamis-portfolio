@@ -26,13 +26,16 @@ export default function Hero() {
         Frontend React Developer
       </motion.h2>
 
+      {/* Personal Tagline */}
       <motion.p
         className="mt-6 max-w-2xl text-center text-gray-400 text-base md:text-lg leading-relaxed"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
       >
-        I specialize in building elegant, responsive, and user-friendly web applications using modern frontend technologies like React, Tailwind CSS, Redux, and Framer Motion.
+        I <span className="text-green-400 font-semibold">craft experiences</span>, not just websites — turning ideas into{" "}
+        <span className="text-blue-400 font-semibold">pixel-perfect</span> and{" "}
+        <span className="text-purple-400 font-semibold">responsive</span> interfaces.
       </motion.p>
 
       {/* CTA Buttons */}
