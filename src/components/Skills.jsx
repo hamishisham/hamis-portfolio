@@ -1,6 +1,14 @@
-// components/Skills.jsx
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs, FaGitAlt, FaGithub } from "react-icons/fa";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJsSquare,
+  FaReact,
+  FaNodeJs,
+  FaGitAlt,
+  FaGithub,
+} from "react-icons/fa";
 import { SiRedux, SiTailwindcss } from "react-icons/si";
 
 const skillsData = [
@@ -16,11 +24,28 @@ const skillsData = [
 ];
 
 export default function Skills() {
+  const [showAll, setShowAll] = useState(false);
+  const skillsRef = useRef(null);
+
+  const visibleSkills = showAll ? skillsData : skillsData.slice(0, 4);
+
+  const handleToggle = () => {
+    if (showAll && skillsRef.current) {
+      skillsRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+    setShowAll(!showAll);
+  };
+
   return (
-    <section id="skills" className="w-full py-20 bg-[#0d1117] text-white px-4 lg:px-32">
+    <section
+      id="skills"
+      ref={skillsRef}
+      className="w-full py-20 bg-[#0d1117] text-white px-4 lg:px-32"
+    >
       <h2 className="text-3xl font-bold text-center mb-10">Skills</h2>
+
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {skillsData.map((skill, index) => (
+        {visibleSkills.map((skill, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 40 }}
@@ -49,6 +74,15 @@ export default function Skills() {
             </div>
           </motion.div>
         ))}
+      </div>
+
+      <div className="text-center mt-6 md:hidden">
+        <button
+          onClick={handleToggle}
+          className="text-sm px-6 py-2 bg-green-600 hover:bg-green-500 transition rounded-md"
+        >
+          {showAll ? "Show Less" : "Show More"}
+        </button>
       </div>
     </section>
   );
