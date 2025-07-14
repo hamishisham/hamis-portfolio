@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   FaHtml5,
@@ -25,9 +25,22 @@ const skillsData = [
 
 export default function Skills() {
   const [showAll, setShowAll] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const skillsRef = useRef(null);
 
-  const visibleSkills = showAll ? skillsData : skillsData.slice(0, 4);
+  useEffect(() => {
+    // detect if screen is small (less than 768px)
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    setIsSmallScreen(mediaQuery.matches);
+
+    const handleResize = () => setIsSmallScreen(mediaQuery.matches);
+    mediaQuery.addEventListener("change", handleResize);
+
+    return () => mediaQuery.removeEventListener("change", handleResize);
+  }, []);
+
+  const visibleSkills =
+    isSmallScreen && !showAll ? skillsData.slice(0, 4) : skillsData;
 
   const handleToggle = () => {
     if (showAll && skillsRef.current) {
@@ -62,7 +75,6 @@ export default function Skills() {
               </div>
             </div>
 
-            {/* Progress Bar */}
             <div className="w-full bg-gray-700 h-2 rounded-full mt-2">
               <motion.div
                 initial={{ width: 0 }}
@@ -76,14 +88,16 @@ export default function Skills() {
         ))}
       </div>
 
-      <div className="text-center mt-6 md:hidden">
-        <button
-          onClick={handleToggle}
-          className="text-sm px-6 py-2 bg-green-600 hover:bg-green-500 transition rounded-md"
-        >
-          {showAll ? "Show Less" : "Show More"}
-        </button>
-      </div>
+      {isSmallScreen && (
+        <div className="text-center mt-6">
+          <button
+            onClick={handleToggle}
+            className="text-sm px-6 py-2 bg-green-600 hover:bg-green-500 transition rounded-md"
+          >
+            {showAll ? "Show Less" : "Show More"}
+          </button>
+        </div>
+      )}
     </section>
   );
 }

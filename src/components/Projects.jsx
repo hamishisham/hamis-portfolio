@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -123,9 +123,21 @@ function ProjectCard({ project, index }) {
 // Projects Section Component
 export default function Projects() {
   const [showAllUI, setShowAllUI] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const sectionRef = useRef(null);
 
-  const visibleUIProjects = showAllUI ? uiProjects : uiProjects.slice(0, 2);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    setIsSmallScreen(mediaQuery.matches);
+
+    const handleResize = () => setIsSmallScreen(mediaQuery.matches);
+    mediaQuery.addEventListener("change", handleResize);
+
+    return () => mediaQuery.removeEventListener("change", handleResize);
+  }, []);
+
+  const visibleUIProjects =
+    isSmallScreen && !showAllUI ? uiProjects.slice(0, 2) : uiProjects;
 
   const handleToggleUI = () => {
     if (showAllUI && sectionRef.current) {
@@ -135,7 +147,11 @@ export default function Projects() {
   };
 
   return (
-    <section ref={sectionRef} id="projects" className="w-full py-20 bg-[#0d1117] text-white px-4 lg:px-32">
+    <section
+      ref={sectionRef}
+      id="projects"
+      className="w-full py-20 bg-[#0d1117] text-white px-4 lg:px-32"
+    >
       <h2 className="text-3xl font-bold text-center mb-10">Projects</h2>
 
       {/* Full-Stack Projects */}
@@ -154,15 +170,17 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Show More / Less Button */}
-      <div className="text-center mt-6 md:hidden">
-        <button
-          onClick={handleToggleUI}
-          className="text-sm px-6 py-2 bg-green-600 hover:bg-green-500 transition rounded-md"
-        >
-          {showAllUI ? "Show Less" : "Show More"}
-        </button>
-      </div>
+      {/* Show More / Less Button for Small Screens Only */}
+      {isSmallScreen && (
+        <div className="text-center mt-6">
+          <button
+            onClick={handleToggleUI}
+            className="text-sm px-6 py-2 bg-green-600 hover:bg-green-500 transition rounded-md"
+          >
+            {showAllUI ? "Show Less" : "Show More"}
+          </button>
+        </div>
+      )}
     </section>
   );
 }
